@@ -37,6 +37,7 @@
   # set your kubeconfig path
   
   export KUBECONFIG=~/.kube/config
+  export KOPS_STATE_STORE=s3://$BUCKET_NAME
 
   # create "prod" cluster v1.13.5
   
