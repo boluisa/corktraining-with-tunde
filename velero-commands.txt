@@ -1,0 +1,37 @@
+BACKUP
+
+velero create backup <backup_name>
+
+velero get backups
+
+
+SCHEDULING
+
+(every hour, one week ttl, everything except velero namespace)
+
+velero create schedule prod-hourly --schedule="@every 1h" --ttl 168h0m0s
+
+velero get schedules
+
+velero get backups
+
+(every half-hour, three hour ttl, guestbook-example namespace only)
+
+velero create schedule guestbook-halfhour --schedule="@every 30m" --ttl 3h0m0s
+
+velero get schedules
+
+velero get backups
+
+(^ same, but with cron notation)
+
+velero create schedule guestbook-halfhour-cron --schedule="*/30 * * * *" --ttl 3h0m0s
+
+velero get schedules
+
+velero get backups
+
+
+RESTORE
+
+velero create restore restore-test --from-backup <backup_name>
